@@ -8,3 +8,4 @@ pandas
 python-docx
 PyPDF2
 joblib
+pdfplumber
