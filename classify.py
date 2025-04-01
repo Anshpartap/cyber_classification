@@ -8,9 +8,9 @@ from transformers import BertTokenizer, BertModel
 from sklearn.feature_extraction.text import CountVectorizer
 
 # === Load Models & Tokenizers ===
-xgb_classifier = joblib.load("xgb_classifier.pkl")
-lda_model = joblib.load("lda_model.pkl")
-vectorizer = joblib.load("vectorizer.pkl")
+xgb_classifier = joblib.load("xgb_classifier (1).pkl")
+lda_model = joblib.load("lda_model (2).pkl")
+vectorizer = joblib.load("vectorizer (1).pkl")
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 bert_model = BertModel.from_pretrained("bert-base-uncased")
 bert_model.eval()
