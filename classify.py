@@ -1,4 +1,5 @@
 import os
+import pdfplumber 
 import numpy as np
 import torch
 import docx
@@ -16,6 +17,7 @@ bert_model = BertModel.from_pretrained("bert-base-uncased")
 bert_model.eval()
 
 # === Utility: Extract Text from PDF or DOCX ===
+
 def extract_text(file):
     text = ""
     try:
@@ -23,14 +25,15 @@ def extract_text(file):
             doc = docx.Document(file)
             text = " ".join([para.text for para in doc.paragraphs])
         elif file.name.endswith(".pdf"):
-            reader = PyPDF2.PdfReader(file)
-            for page in reader.pages:
-                page_text = page.extract_text()
-                if page_text:
-                    text += page_text
+            with pdfplumber.open(file) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text += page_text
     except Exception as e:
         print(f"❌ Error reading file: {e}")
     return text.strip()
+    
 
 # === Feature: Get BERT Embedding ===
 def get_bert_embedding(text):
