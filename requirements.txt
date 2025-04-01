@@ -1,0 +1,10 @@
+streamlit
+scikit-learn
+xgboost
+transformers
+torch
+numpy
+pandas
+docx
+PyPDF2
+joblib
