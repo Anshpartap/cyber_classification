@@ -5,6 +5,6 @@ transformers
 torch
 numpy
 pandas
-docx
+python-docx
 PyPDF2
 joblib
